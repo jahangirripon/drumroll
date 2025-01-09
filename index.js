@@ -11,6 +11,7 @@ for(let i = 0; i < drumButtons.length; i++) {
         buttonInnerHTML = this.innerHTML;
         this.style.color = "white";
         makeSound(buttonInnerHTML);
+        buttonAnimation(buttonInnerHTML);
 
     } );
 
@@ -20,6 +21,7 @@ document.addEventListener("keydown", function(event) {
     // console.log(event);
     console.log(event.key);
     makeSound(event.key);
+    buttonAnimation(event.key);
 });
 
 
@@ -56,4 +58,15 @@ function makeSound(key) {
         default:
             break;
     }
+}
+
+
+
+function buttonAnimation(currentKey) {
+    var activeButton = document.querySelector("." + currentKey);
+    activeButton.classList.add("pressed");
+    setTimeout(() => {
+        activeButton.classList.remove("pressed");
+    }, 100);
+
 }
